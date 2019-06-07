@@ -26,15 +26,7 @@ submit.on("click", function () {
         var inputValue = inputElement.property("value");
 
         var filteredData = tableData.filter(tableData => tableData.datetime === inputValue);
-        var tbody = d3.select("tbody");
-        tbody.html("");
-        filteredData.forEach(function (ufoSighting) {
-            var row = tbody.append("tr");
-            Object.entries(ufoSighting).forEach(function ([key, value]) {
-                var cell = row.append("td");
-                cell.text(value);
-            });
-        });
+
         d3.select("#datetime").property("value", "");
     };
     if (d3.select("#city").property("value") != "") {
@@ -44,16 +36,8 @@ submit.on("click", function () {
         // Get the value property of the input element
         var inputValue = inputElement.property("value");
 
-        var filteredData = tableData.filter(tableData => tableData.city === inputValue);
-        var tbody = d3.select("tbody");
-        tbody.html("");
-        filteredData.forEach(function (ufoSighting) {
-            var row = tbody.append("tr");
-            Object.entries(ufoSighting).forEach(function ([key, value]) {
-                var cell = row.append("td");
-                cell.text(value);
-            });
-        });
+        var filteredData = filteredData.filter(tableData => tableData.city === inputValue);
+
         d3.select("#city").property("value", "");
     };
     if (d3.select("#state").property("value") != "") {
@@ -63,16 +47,8 @@ submit.on("click", function () {
         // Get the value property of the input element
         var inputValue = inputElement.property("value");
 
-        var filteredData = tableData.filter(tableData => tableData.state === inputValue);
-        var tbody = d3.select("tbody");
-        tbody.html("");
-        filteredData.forEach(function (ufoSighting) {
-            var row = tbody.append("tr");
-            Object.entries(ufoSighting).forEach(function ([key, value]) {
-                var cell = row.append("td");
-                cell.text(value);
-            });
-        });
+        var filteredData = filteredData.filter(tableData => tableData.state === inputValue);
+
         d3.select("#state").property("value", "");
     };
     if (d3.select("#country").property("value") != "") {
@@ -82,16 +58,8 @@ submit.on("click", function () {
         // Get the value property of the input element
         var inputValue = inputElement.property("value");
 
-        var filteredData = tableData.filter(tableData => tableData.country === inputValue);
-        var tbody = d3.select("tbody");
-        tbody.html("");
-        filteredData.forEach(function (ufoSighting) {
-            var row = tbody.append("tr");
-            Object.entries(ufoSighting).forEach(function ([key, value]) {
-                var cell = row.append("td");
-                cell.text(value);
-            });
-        });
+        var filteredData = filteredData.filter(tableData => tableData.country === inputValue);
+
         d3.select("#country").property("value", "");
     };
     if (d3.select("#shape").property("value") != "") {
@@ -101,17 +69,18 @@ submit.on("click", function () {
         // Get the value property of the input element
         var inputValue = inputElement.property("value");
 
-        var filteredData = tableData.filter(tableData => tableData.shape === inputValue);
-        var tbody = d3.select("tbody");
-        tbody.html("");
-        filteredData.forEach(function (ufoSighting) {
-            var row = tbody.append("tr");
-            Object.entries(ufoSighting).forEach(function ([key, value]) {
-                var cell = row.append("td");
-                cell.text(value);
-            });
-        });
+        var filteredData = filteredData.filter(tableData => tableData.shape === inputValue);
+
         d3.select("#shape").property("value", "");
     };
-    filteredData = data;
+    var tbody = d3.select("tbody");
+    tbody.html("");
+    filteredData.forEach(function (ufoSighting) {
+        var row = tbody.append("tr");
+        Object.entries(ufoSighting).forEach(function ([key, value]) {
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
+    var filteredData = data;
 });
